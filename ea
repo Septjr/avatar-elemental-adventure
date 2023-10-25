@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<body class="">
+    <html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+  </head>
+  <body class="">
+    <div id="helptext"><p><h3>A:EA Map</h3>Click on the islands for more information.</p></div>
+    <div id="map" style="width: 1151px; height: 600px; position: relative; outline: none;" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-574px, 300px, 0px);"><div class="leaflet-pane leaflet-tile-pane"></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-overlay-pane"><svg pointer-events="none" class="leaflet-zoom-animated" width="1381" height="720" viewBox="459 -360 1381 720" style="transform: translate3d(459px, -360px, 0px);"><g><path class="leaflet-interactive" stroke="#0" stroke-opacity="0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#0" fill-opacity="0" fill-rule="evenodd" d="M1047 268L1135 198L1089 112L1039 128L995 150L987 186L1017 248z"></path><path class="leaflet-interactive" stroke="#0" stroke-opacity="0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#0" fill-opacity="0" fill-rule="evenodd" d="M1317 240L1277 264L1233 268L1199 178L1229 160L1285 148z"></path><path class="leaflet-interactive" stroke="#0" stroke-opacity="0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#0" fill-opacity="0" fill-rule="evenodd" d="M1327 136L1359 92L1355 56L1323 44L1307 46L1289 66L1281 100L1291 116L1305 130z"></path><path class="leaflet-interactive" stroke="#0" stroke-opacity="0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#0" fill-opacity="0" fill-rule="evenodd" d="M1307 12L1363 4L1339 -54L1289 -42z"></path><path class="leaflet-interactive" stroke="#0" stroke-opacity="0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#0" fill-opacity="0" fill-rule="evenodd" d="M1327 -88L1363 4L1423 24L1477 14L1503 -16L1519 -50L1513 -130L1453 -108L1417 -90z"></path><path class="leaflet-interactive" stroke="#0" stroke-opacity="0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#0" fill-opacity="0" fill-rule="evenodd" d="M1359 -94L1419 -98L1457 -130L1457 -178L1425 -214L1365 -210L1321 -176L1333 -140z"></path><path class="leaflet-interactive" stroke="#0" stroke-opacity="0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#0" fill-opacity="0" fill-rule="evenodd" d="M1119 -240L1137 -164L1185 -174L1157 -250z"></path><path class="leaflet-interactive" stroke="#0" stroke-opacity="0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#0" fill-opacity="0" fill-rule="evenodd" d="M1089 -162L1017 -224L977 -208L955 -178L989 -148L1045 -120z"></path><path class="leaflet-interactive" stroke="#0" stroke-opacity="0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#0" fill-opacity="0" fill-rule="evenodd" d="M1181 -64L1113 -100L1139 -118L1169 -116L1183 -94z"></path><path class="leaflet-interactive" stroke="#0" stroke-opacity="0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#0" fill-opacity="0" fill-rule="evenodd" d="M1065 54L1091 -10L1091 -36L1065 -94L897 -102L863 -112L815 -122L745 -98L705 -46L707 10L717 44L755 52L853 60z"></path></g></svg><img class="leaflet-image-layer leaflet-zoom-animated" src="resources/map.png" alt="" style="z-index: 1; transform: translate3d(575px, -300px, 0px); width: 1150px; height: 600px;"></div><div class="leaflet-pane leaflet-marker-pane"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(574.5px, -300px, 0px) scale(1);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in leaflet-disabled" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out leaflet-disabled" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a></div></div></div></div>
+    <script>
+
+    // Find the element with the "helptext" ID
+var helptextElement = document.getElementById('helptext');
+
+// Check if the element exists before manipulating it
+if (helptextElement) {
+    // Set the inner HTML to "A:EA"
+    helptextElement.innerHTML = "A:EA";
+}
+
+  var map = L.map('map', {
+    maxZoom: 1,
+    minZoom: 1,
+    crs: L.CRS.Simple
+}).setView([0, 0], 1);
+
+map.setMaxBounds(new L.LatLngBounds([0, 575], [300, 0]));
+
+// Create an image overlay for the original map
+var originalMapUrl = 'https://i.ibb.co/jzV3RSt/Interactive-Map.png';
+var originalMap = L.imageOverlay(originalMapUrl, [[0, 575], [300, 0]]).addTo(map);
+
+// Initialize the current map as the original map
+var currentMap = originalMap;
+
+function changeMap(imageUrl) {
+  // Remove the current map from the map
+  currentMap.remove();
+
+  if (imageUrl) {
+    // Create a new image overlay with the specified URL
+    currentMap = L.imageOverlay(imageUrl, [[0, 575], [300, 0]]).addTo(map);
+  } else {
+    // If no new URL is provided, use the original map
+    currentMap = originalMap;
+  }
+
+  // You can remove these lines if they are still needed
+  $(".leaflet-popup").remove();
+  $(".leaflet-interactive").remove();
+}
+
+mapfc();
+
+var imageBounds = [[300, 0], [0, 575]];
+var imageUrl = originalMapUrl;
+var image = L.imageOverlay(imageUrl, imageBounds);
+image.addTo(map);
+
+    var newicon = L.Icon.extend({
+    	options: {
+    		shadowUrl: '',
+    		iconSize: [38, 38],
+    		iconAnchor: [16, 38]
+    	}
+    });
+
+    var newicon = L.Icon.extend({
+    	options: {
+    		shadowUrl: '',
+    		iconSize: [38, 38],
+    		iconAnchor: [16, 38]
+    	}
+    });
+
+    var kyoshiIcon = L.icon({
+        iconUrl: 'https://i.ibb.co/pWrzgGB/image-removebg-preview-5.png',
+        shadowUrl: '',
+        iconSize:     [38, 21],
+        iconAnchor:   [16, 21],
+        popupAnchor:  [3, -21]
+    });
+
+    var airIcon = new newicon({iconUrl: 'https://i.ibb.co/f8v7RNp/995874056274448506-1.webp', popupAnchor:  [3, -21]});
+        airshop = new newicon({iconUrl: 'https://i.ibb.co/rpm6YnQ/Wind-Symbol-Discord.png', popupAnchor: [3, -21]});
+    		earthIcon = new newicon({iconUrl: 'https://i.ibb.co/PQrcr3c/Rock.png', popupAnchor:  [4, -23]});
+        earthshop = new newicon({iconUrl: 'https://i.ibb.co/5MJDbbw/Rock-1.png', popupAnchor: [3, -21]});
+    		fireIcon = new newicon({iconUrl: 'https://i.ibb.co/Sf9Rh4r/Flame-Emoji.png', popupAnchor:  [3, -21]});
+        fireshop = new newicon({iconUrl: 'https://i.ibb.co/B6bws2c/Flame-Emoji-2-1-1.png', popupAnchor: [3, -21]});
+    		waterIcon = new newicon({iconUrl: 'https://i.ibb.co/V3mKmSZ/Liquid.png', popupAnchor:  [4, -24]});
+        watershop = new newicon({iconUrl: 'https://i.ibb.co/sgYQpHY/Liquid-2.png', popupAnchor: [3, -21]});
+    		redLotusIcon = new newicon({iconUrl: 'https://i.ibb.co/9Wp6KBT/Element-Rumble.png', popupAnchor:  [3.25, -19]});
+    		whiteLotusIcon = new newicon({iconUrl: 'https://i.ibb.co/9Wp6KBT/Element-Rumble.png', popupAnchor:  [3.25, -19]});
+
+    function mapfc(){
+      var text = document.createElement('p');
+      text.innerHTML = "<h3>Avatar: Elemental Adventure Map</h3>Click on the islands for more information.";
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+
+      var sat = L.polygon([
+      		[16, 236],
+      		[51, 280],
+      		[94, 257],
+      		[86, 232],
+      		[75, 210],
+      		[57, 206],
+      		[26, 221],
+      ], { color: '#0', opacity: '0', fillOpacity: '0'}).addTo(map);
+
+      var swt = L.polygon([
+      		[30, 371],
+      		[18, 351],
+      		[16, 329],
+      		[61, 312],
+      		[70, 327],
+      		[76, 355],
+      ], { color: '#0', opacity: '0', fillOpacity: '0'}).addTo(map);
+
+
+      var kyoshi = L.polygon([
+      		[82, 376],
+      		[80, 392],
+      		[122, 390],
+      		[110, 381],
+      		[121, 374],
+      		[127, 366],
+      		[117, 357],
+      		[100, 353],
+      		[92, 358],
+      		[85, 365]
+      ], { color: '#0', opacity: '0', fillOpacity: '0'}).addTo(map);
+
+      var swamp = L.polygon([
+      		[144, 366],
+      		[148, 394],
+      		[177, 382],
+      		[171, 357]
+      ], { color: '#0', opacity: '0', fillOpacity: '0'}).addTo(map);
+
+      var desert = L.polygon([
+      		[140, 376],
+      		[148, 394],
+      		[138, 424],
+      		[143, 451],
+      		[144, 464],
+      		[175, 472],
+      		[215, 469],
+      		[204, 439],
+      		[195, 421]
+      ], { color: '#0', opacity: '0', fillOpacity: '0'}).addTo(map);
+
+      var bss = L.polygon([
+      		[160, 392],
+      		[199, 422],
+      		[215, 441],
+      		[239, 441],
+      		[257, 425],
+      		[255, 395],
+      		[238, 373],
+      		[220, 379]
+      ], { color: '#0', opacity: '0', fillOpacity: '0'}).addTo(map);
+
+      var nwt = L.polygon([
+      		[270, 272],
+      		[232, 281],
+      		[237, 305],
+      		[275, 291]
+      ], { color: '#0', opacity: '0', fillOpacity: '0'}).addTo(map);
+
+      var wat = L.polygon([
+      		[231, 257],
+      		[262, 221],
+      		[254, 201],
+      		[239, 190],
+      		[224, 207],
+      		[210, 235]
+      ], { color: '#0', opacity: '0', fillOpacity: '0'}).addTo(map);
+
+      var roku = L.polygon([
+      		[182, 303],
+      		[200, 269],
+      		[209, 282],
+      		[208, 297],
+      		[197, 304]
+      ], { color: '#0', opacity: '0', fillOpacity: '0'}).addTo(map);
+
+      var fn = L.polygon([
+      		[123, 245],
+      		[155, 258],
+      		[168, 258],
+      		[197, 245],
+      		[201, 161],
+      		[206, 144],
+      		[211, 120],
+      		[199, 85],
+      		[173, 65],
+      		[145, 66],
+      		[128, 71],
+      		[124, 90],
+      		[120, 139],
+      ], {color: '#0', opacity: '0', fillOpacity: '0'}).addTo(map);
+
+
+      var satpopup = L.DomUtil.create('div', 'popup');
+      satpopup.innerHTML = '<div class = "satpopup"><h1>Upward Wind Temple</h1> Click here to see the map of the Upward Temple.</div>';
+      var swtpopup = L.DomUtil.create('div', 'popup');
+      swtpopup.innerHTML = '<div class = "swtpopup"><h1>Southern Liquid Ruins</h1> Click here to see the map of the Southern Liquid Ruins.</div>';
+      var kyoshipopup = L.DomUtil.create('div', 'popup');
+      kyoshipopup.innerHTML = '<div class = "kyoshipopup"><h1><h1>Warrior\'s Island</h1> Click here to see the map of Warrior\'s Island.</div>';
+      var desertpopup = L.DomUtil.create('div', 'popup');
+      desertpopup.innerHTML = '<div class = "desertpopup"><h1>Desert</h1> Click here to see the map of the Desert.</div>';
+      var swamppopup = L.DomUtil.create('div', 'popup');
+      swamppopup.innerHTML = '<div class = "swamppopup"><h1>Swamp</h1> Click here to see the map of the Swamp.</div>';
+      var bsspopup = L.DomUtil.create('div', 'popup');
+      bsspopup.innerHTML = '<div class = "bsspopup"><h1>Rock Realm City</h1> Click here to see the map of Rock Realm City.</div>';
+      var nwtpopup = L.DomUtil.create('div', 'popup');
+      nwtpopup.innerHTML = '<div class = "nwtpopup"><h1>Northern Liquid City</h1> Click here to see the map of the Northern Liquid City.</div>';
+      var rokupopup = L.DomUtil.create('div', 'popup');
+      rokupopup.innerHTML = '<div class = "rokupopup"><h1>Ancient Flame Temple</h1> Click here to see the map of Ancient Flame Temple.</div>';
+      var watpopup = L.DomUtil.create('div', 'popup');
+      watpopup.innerHTML = '<div class = "watpopup"><h1>Downward Wind Temple</h1> Click here to see the map of the Downward Wind Temple.</div>';
+      var fnpopup = L.DomUtil.create('div', 'popup');
+      fnpopup.innerHTML = '<div class = "fnpopup"><h1>Flame Empire</h1> Click here to see the map of the Flame Empire.</div>';
+
+      $('div.satpopup', satpopup).on('click', function() {
+      		changeMap('https://i.ibb.co/18BBcHk/Upward-Wind-Temple.png');
+          satfc();
+      });
+      $('div.swtpopup', swtpopup).on('click', function() {
+      		changeMap('https://i.ibb.co/YLTy6MV/Southern-Liquid-Ruins.png');
+          swtfc();
+      });
+      $('div.kyoshipopup', kyoshipopup).on('click', function() {
+      		changeMap('https://i.ibb.co/Tv6Z6Cz/Warrior-s-Island.png');
+          kyoshifc();
+      });
+      $('div.desertpopup', desertpopup).on('click', function() {
+      		changeMap('https://i.ibb.co/BGD2RYZ/Desert.png');
+          desertfc();
+      });
+      $('div.swamppopup', swamppopup).on('click', function() {
+      		changeMap('https://i.ibb.co/YDgrZjD/swamp.png');
+          swampfc();
+      });
+      $('div.bsspopup', bsspopup).on('click', function() {
+      		changeMap('https://i.ibb.co/x3LH96Z/Rock-Realm-City.png');
+          bssfc();
+      });
+      $('div.nwtpopup', nwtpopup).on('click', function() {
+      		changeMap('https://i.ibb.co/ZJsWDYf/Norther-Liquid-Ruins2.png');
+          nwtfc();
+      });
+      $('div.rokupopup', rokupopup).on('click', function() {
+      		changeMap('https://i.ibb.co/7JNzwWG/Ancient-Flame-Temple.png');
+          rokufc();
+      });
+      $('div.watpopup', watpopup).on('click', function() {
+      		changeMap('https://i.ibb.co/wwcxsM4/Downward-Wind-Temple.png');
+          watfc();
+      });
+      $('div.fnpopup', fnpopup).on('click', function() {
+      		changeMap('https://i.ibb.co/rHCfSz2/Flame-Empire.png');
+          fnfc();
+      });
+
+      sat.bindPopup(satpopup);
+      swt.bindPopup(swtpopup);
+      kyoshi.bindPopup(kyoshipopup);
+      swamp.bindPopup(swamppopup);
+      desert.bindPopup(desertpopup);
+      bss.bindPopup(bsspopup);
+      nwt.bindPopup(nwtpopup);
+      roku.bindPopup(rokupopup);
+      wat.bindPopup(watpopup);
+      fn.bindPopup(fnpopup);
+
+    }
+    function airballfc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Airball Stands</h3><button onclick="changeMap(\'sat\'); satfc();">Click to go back to the Southern Air Temple map.</button><br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var popup = L.popup({maxWidth: 500})
+          .setLatLng([176, 289])
+          .setContent('<section class="container2" style="width: 500px">These are the Airball Stands. They are used to play the game Airball which rules are the following:<br>✦ Everyone has to be an Airbender.<br>✦ The only moves allowed are Gust, Glider Swipe and Air Shield.<br>✦ If you get pushed off you are OUT.<br>How to play: <br>There will be 2 teams of 2 ( it can also be a one versus one ) . There will be a 3 minutes timer   When the game starts the players from each team try to push the enemy team off. <br>If all players from one team fall, the other team wins. <br>If after the timer ends there are still players standing on the Airball Court, then the team with the most players standing wins, otherwise it is a TIE.<br>Lastly if all the players from both teams fell off, then the team whose player fell LAST wins.')
+          .openOn(map);
+
+    }
+    function bssfc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Rock Realm City</h3>Click on the icons for more information.<br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var wlcamp = L.polygon([
+          [73, 185],
+          [73, 169],
+          [100, 149],
+          [110, 149],
+          [115, 154],
+          [117, 166],
+          [112, 175],
+          [90, 184],
+      ], {color: '#FFCB9F'}).addTo(map);
+
+      var mako = L.polygon([
+          [163, 359],
+          [164, 351],
+          [156, 345],
+          [152, 351],
+          [155, 357],
+      ], {color: '#FE0000'}).addTo(map);
+
+      var wl = L.marker([104, 165], {icon : whiteLotusIcon}).addTo(map);
+
+      var crown = L.marker([181.71875, 319], {icon : earthIcon}).addTo(map);
+
+      var criminal = L.marker([114.71875, 329], {icon : earthIcon}).addTo(map);
+
+      var mother = L.marker([157, 253], {icon : earthIcon}).addTo(map);
+
+      var child = L.marker([122, 335], {icon : earthIcon}).addTo(map);
+
+      var vechileShop = L.marker([41.21875, 343.5], {icon : earthshop}).addTo(map);
+
+      var shop = L.marker([146.21875, 371], {icon : earthshop}).addTo(map);
+
+      var rl = L.marker([150, 212], {icon : redLotusIcon}).addTo(map);
+
+      var wl2 = L.marker([220, 297], {icon : whiteLotusIcon}).addTo(map);
+
+      var wlpopup = L.DomUtil.create('div', 'popup');
+      wlpopup.innerHTML = '<section class="container" style="height:140px"><div class="one"><h3>White Lotus Quest - Level Requirement: Level 150</h3><b>Talk to this NPC if you want to join the White Lotus. Do the tasks he and the other White Lotus members give.<br>Part 1: Southern Water Tribe&gt;</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[3000] Experience<br>[100](200) Pieces';
+      var crownpopup = L.DomUtil.create('div', 'popup');
+      crownpopup.innerHTML = '<section class="container" style="height: 130px;"><div class="one" style="padding-right: 5px;"><h3>Crown Quest - Level Requirement: Level 50</h3><b>Find the Earth King\'s Crown in the City of Chin and return it to the quest giver to claim your reward.</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[1000] Experience<br>[25](50) Pieces';
+      var criminalpopup = L.DomUtil.create('div', 'popup');
+      criminalpopup.innerHTML = '<section class="container" style="height: 120px"><div class="one" style="padding-right: 5px;"><h3>Criminal Quest - Level Requirement: Level 25</h3><b>Talk to two Earth Kingdom citizens and tell the quest giver where the criminal is.</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[1400] Experience<br>[15](30) Pieces';
+      var motherpopup = L.DomUtil.create('div', 'popup');
+      motherpopup.innerHTML = '<section class="container"><h3>Lost Child\'s Mother</h3><b>This NPC is the Mother of the Lost Child. This NPC is also part of the Criminal Quest.';
+      var childpopup = L.DomUtil.create('div', 'popup');
+      childpopup.innerHTML = '<section class="container"><div class="one" style="padding-right: 5px;"><h3>Find the Mother - Level Requirement: Level 1</h3><b>Find the child\'s mother and talk to her to claim your reward.</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[200] Experience<br>[20](40) Pieces';
+      var vechileShoppopup = L.DomUtil.create('div', 'popup');
+      vechileShoppopup.innerHTML = '<section class="container"><h3>Earth Vehicle Shop</h3><b>This shop sells vehicles to Earthbenders:<br>Dinghy for free<br>Hot Air Balloon for 175 Pieces<br>Badgermole for 1000 Pieces<br>Ferry for 400 Pieces';
+      var shoppopup = L.DomUtil.create('div', 'popup');
+      shoppopup.innerHTML = '<section class="container2" style="height: 180px; width: 300px;"><h3>Earth Gear Shop</h3><b>This shop sells to Earthbenders:<div class="three">Earth Kingdom Soldier Helmet for 100 Pieces<br>Terra Team Helmet for 90 Pieces<brEarth Kingdom Soldier Helmet for 125 Pieces><br>Earth Kingdom Guard Helmet for 125 Pieces</div><div class="four">Dai Li Helmet for 250 Pieces<br>Earth Kingdom Necklace for 75 Pieces<br>Twin Hammers 200 Pieces<br>Earth Kingdom Shield for 150 Pieces';
+      var rlpopup = L.DomUtil.create('div', 'popup');
+      rlpopup.innerHTML = '<section class="container"><h3>Red Lotus Quest Part 1 - Level Requirement: Level 200</h3><b>This NPC gives the first task for the Red Lotus Quest. The task is to find the Red Lotus Pai Sho piece at the Northern Water Tribe.<br>&lt;Quest start: Southern Air Temple | Part 2: Fire Nation &gt;';
+      var wl2popup = L.DomUtil.create('div', 'popup');
+      wl2popup.innerHTML = '<section class="container" style="width: 400px"><h3>White Lotus Quest Part 2- Level Requirement: Level 150</h3><b>This NPC gives the second task for the White Lotus Quest. The task is to retrieve a sword from Kyoshi Island.<br>&lt;Part 1: Southern Water Tribe | Part 3: Southern Water Tribe &gt;';
+
+      wl.bindPopup(wlpopup);
+      crown.bindPopup(crownpopup);
+      criminal.bindPopup(criminalpopup);
+      mother.bindPopup(motherpopup);
+      child.bindPopup(childpopup);
+      vechileShop.bindPopup(vechileShoppopup);
+      shop.bindPopup(shoppopup, {maxWidth: 500});
+      rl.bindPopup(rlpopup);
+      wl2.bindPopup(wl2popup, {maxWidth: 500});
+
+      var wlcamppopup = L.DomUtil.create('div', 'popup');
+      wlcamppopup.innerHTML = '<div class = "wlcamppopup"><h1>Bandit Camp</h1> Click here to see the Bandit camp up close.</div>';
+      var makopopup = L.DomUtil.create('div', 'popup');
+      makopopup.innerHTML = '<div class = "makopopup"><h1>Soldier\'s Grave</h1> Click here to see the Soldier\'s Grave up close.</div>';
+
+      $('div.wlcamppopup', wlcamppopup).on('click', function() {
+      		changeMap('https://i.ibb.co/mqH7fkn/Bandit-Camp.png');
+          wlcampfc();
+      });
+      $('div.makopopup', makopopup).on('click', function() {
+      		changeMap('https://i.ibb.co/5jrsDnt/Soldier-s-Grave.png');
+          makofc();
+      });
+
+      wlcamp.bindPopup(wlcamppopup);
+      mako.bindPopup(makopopup);
+
+
+    }
+    function desertfc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Desert Map</h3>Click on the icons for more information.<br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var palmoasis = L.polygon([
+          [144, 183],
+          [155, 189],
+          [167, 183],
+          [164, 170],
+          [154, 160],
+          [142, 168],
+          [141, 177],
+      ], {color: '#1D6833'}).addTo(map);
+
+      var rl = L.marker([201, 237], {icon : redLotusIcon}).addTo(map);
+
+      var rl2 = L.marker([110, 369], {icon : redLotusIcon}).addTo(map);
+
+      var rl2popup = L.DomUtil.create('div', 'popup');
+      rl2popup.innerHTML = '<section class="container"><h3>Red Lotus Quest Part 4.5 - Level Requirement: Level 200</h3><b>This NPC is the Sandbender you need to defeat for the fourth task of the Red Lotus Quest.<br>&lt; Part 4: Si Wong Desert&gt;';
+      var rlpopup = L.DomUtil.create('div', 'popup');
+      rlpopup.innerHTML = '<section class="container"><h3>Red Lotus Quest Part 4 - Level Requirement: Level 200</h3><b>This NPC gives the fourth task for the Red Lotus Quest. The task is to defeat a Sandbender part of the White Lotus.<br>&lt;Part 3: Southern Water Tribe | (Part 4.5: Si Wing Desert) | Quest end: Southern Air Temple&gt;';
+
+      rl.bindPopup(rlpopup);
+      rl2.bindPopup(rl2popup);
+
+      var palmoasispopup = L.DomUtil.create('div', 'popup');
+      palmoasispopup.innerHTML = '<div class = "palmoasispopup"><h1>Desert Town</h1> Click here to see the Desert Town up close.</div>';
+
+      $('div.palmoasispopup', palmoasispopup).on('click', function() {
+      		changeMap('https://i.ibb.co/DDM6YpC/Desert-Town.png');
+          palmoasisfc();
+      });
+      palmoasis.bindPopup(palmoasispopup);
+    }
+    function fnfc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Flame Empire Map</h3>Click on the icons for more information.<br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var vechileShop = L.marker([74.71875, 495], {icon : fireshop}).addTo(map);
+
+      var shop = L.marker([163, 190], {icon : fireshop}).addTo(map);
+
+      var scroll = L.marker([167, 161], {icon : fireIcon}).addTo(map);
+
+      var kyoshi = L.marker([161, 173], {icon : fireIcon}).addTo(map);
+
+      var helmet = L.marker([187, 174], {icon : fireIcon}).addTo(map);
+
+      var spy = L.marker([204, 136], {icon : fireIcon}).addTo(map);
+
+      var rl = L.marker([204, 241], {icon : redLotusIcon}).addTo(map);
+
+      var acrobatics = L.marker([153, 294], {icon : fireIcon}).addTo(map);
+
+      var knifes = L.marker([140, 130], {icon: fireIcon}).addTo(map);
+
+      var vechileShoppopup = L.DomUtil.create('div', 'popup');
+      vechileShoppopup.innerHTML = '<section class="container"><h3>Fire Vehicle Shop</h3><b>This shop sells vehicles to Firebenders:<br>Dinghy for free<br>Hot Air Balloon for 175 Pieces<br>Fire Nation Ship for 500 Pieces<br>Dragon for 2000 Pieces';
+      var shoppopup = L.DomUtil.create('div', 'popup');
+      shoppopup.innerHTML = '<section class="container2" style="width: 300px;"><h3>Fire Gear Shop</h3><b>This shop sells to Firebenders:<div class="three">Fire Nation Helmet for 100 Pieces<br>Fire Nation Helmet for 125 Pieces<br>Ninja Mask for 80 Pieces<br>Fire Nation Full Helmet for 150 Pieces<br>Southern Raid Helmet for 150 Pieces</div><div class="four">Southern Raid Helmet for 200 Pieces<br>Fire Nation Full Helmet for 250 Pieces<br>Fire Nation Necklace for 75 Pieces<br>Fire Nation Sword for 100 Pieces<br>Fire Nation Shield for 150 Pieces</div></section>';
+      var scrollpopup = L.DomUtil.create('div', 'popup');
+      scrollpopup.innerHTML = '<section class="container" style="height: 130px;"><div class="one" style="padding-right: 5px;"><h3>Find the Scroll - Level Requirement: Level 50</h3><b>Talk to 3 Fire Nation citizens and then find the lost scroll and return it to the quest giver to claim your prize.</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[1400] Experience<br>[20](40) Pieces</div></section>';
+      var kyoshipopup = L.DomUtil.create('div', 'popup');
+      kyoshipopup.innerHTML = '<section class="container" style="height: 210px;"><div class="one" style="padding-right: 5px;"><h3>Deliver the Letters - Level Requirement: Level 25</h3><b>Deliver a letter to the "Find the Fruit" quest giver on Kyoshi Island, then deliver his letter back to the firebender, then deliver the firebender\'s letter to her friend again, then finally deliver his letter back to the firebender to claim your reward.</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[1600] Experience<br>[35](70) Pieces</div></section>';
+      var helmetpopup = L.DomUtil.create('div', 'popup');
+      helmetpopup.innerHTML = '<section class="container" style="height: 110px;"><div class="one" style="padding-right: 5px;"><h3>Find the Helmet - Level Requirment: Level 1</h3><b>Find the fire nation soldier\'s helmet and then return it to him to claim your reward.</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[200] Experience<br>[15](30) Pieces</div></section>';
+      var spypopup = L.DomUtil.create('div', 'popup');
+      spypopup.innerHTML = '<section class="container" style="height:140px"><div class="one"><h3>Find the Operative - Level Requirement: Level 50</h3><b>Find the other Fire Nation operative, talk to him and return to the quest giver to claim your reward.</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[800] Experience<br>[20](40) Pieces</div></section>';
+      var rlpopup = L.DomUtil.create('div', 'popup');
+      rlpopup.innerHTML = '<section class="container"><h3>Red Lotus Quest Part 2 - Level Requirement: Level 200</h3><b>This NPC gives the second task for the Red Lotus Quest. The task is get the four elemental keys within the four trails and open the door.<br>&lt;Quest start: Southern Air Temple | Part 3: Southern Water Tribe&gt;';
+      var acrobaticspopup = L.DomUtil.create('div', 'popup');
+      acrobaticspopup.innerHTML = '<section class="container"><h3>Acrobatics Teacher - Level Requirment: Level 400</h3><b>This NPC teaches Acrobatics to Nonbenders who are Level 400 for free. Acrobatics reduces the stamina needed for dashing.';
+      var knifespopup = L.DomUtil.create('div', 'popup');
+      knifespopup.innerHTML = '<section class="container"><h3>Knifes Teacher - Level Requirment: Level 150</h3><b>This NPC teaches how to use Knifes to Nonbenders who are Level 150 for free. When you learn this you cannot learn Chi Blocking.';
+
+      vechileShop.bindPopup(vechileShoppopup);
+      shop.bindPopup(shoppopup, {maxWidth: 500});
+      scroll.bindPopup(scrollpopup);
+      kyoshi.bindPopup(kyoshipopup);
+      helmet.bindPopup(helmetpopup);
+      spy.bindPopup(spypopup);
+      rl.bindPopup(rlpopup);
+      acrobatics.bindPopup(acrobaticspopup);
+      knifes.bindPopup(knifespopup);
+
+    }
+    function kyoshifc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Warrior\'s Island Map</h3>Click on the icons for more information.<br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var kyoshiFans = L.marker([209.71875, 358], {icon : kyoshiIcon}).addTo(map);
+
+      var fruits = L.marker([91, 221], {icon : kyoshiIcon}).addTo(map);
+
+      var shop = L.marker([189, 260], {icon : kyoshiIcon}).addTo(map);
+
+      var kyoshiWarrior = L.marker([232.21875, 239], {icon : kyoshiIcon}).addTo(map);
+
+      var kyoshiFanspopup = L.DomUtil.create('div', 'popup');
+      kyoshiFanspopup.innerHTML = '<section class="container" style="height: 130px;"><div class="one" style="padding-right: 5px;"><h3>Find the Kyoshi Warrior Fans - Level Requirement: Level 1</h3><b>Find the Kyoshi Warrior\'s fans and return them to her to claim your reward.</div><div class="two">Rewards:[Normal Reward](Reward if in ALTA Group)<br>[500] Experience<br>[15](30) Pieces';
+      var fruitspopup = L.DomUtil.create('div', 'popup');
+      fruitspopup.innerHTML = '<section class="container" style="height: 130px;"><div class="one" style="padding-right: 5px;"><h3>Find the Fruit - Level Requirement: Level 1</h3><b>Collect an apple, a banana, and an orange and give them to the Freedom Fighter to claim your reward.</div><div class="two">Rewards:[Normal Reward](Reward if in ALTA Group)<br>[500] Experience<br>[20](40) Pieces';
+      var shoppopup = L.DomUtil.create('div', 'popup');
+      shoppopup.innerHTML = '<section class="container"><h3>Kyoshi Gear Shop</h3><b>This shop sells to everyone:<br>Spear for 100 Pieces<br>Mace for 100 Pieces<br>Dual Swords 150 Pieces<br>Dual Hooks 125 Pieces<br>Space Sword 300 Pieces<br>Blue Spirit Mask 200 Pieces';
+      var kyoshiWarriorpopup = L.DomUtil.create('div', 'popup');
+      kyoshiWarriorpopup.innerHTML = '<section class="container"><h3>Become a Kyoshi Warrior - Requirment: Being a Nonbender</h3><b>Talk to this NPC if you want to join the Kyoshi Warriors, you must be a Nonbender to join.';
+
+      kyoshiFans.bindPopup(kyoshiFanspopup);
+      fruits.bindPopup(fruitspopup);
+      shop.bindPopup(shoppopup);
+      kyoshiWarrior.bindPopup(kyoshiWarriorpopup);
+
+    }
+    function makofc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Soldier\'s Grave</h3><button onclick="changeMap(\'https://i.ibb.co/x3LH96Z/Rock-Realm-City.png\'); bssfc();">Click to go back to the Rock Realm City map.</button><br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var popup = L.popup()
+          .setLatLng([94, 485])
+          .setContent("This is the grave of a fallen soldier. This is a picture that was placed by a relative of the soldier; the identity of the relative is unknown, but the soldier will never be forgetten. Upon setting foot on this place, a special music plays as a reminder of the fallen soldier during war.")
+          .openOn(map);
+
+    }
+    function nwtfc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Northern Liquid City Map</h3>Click on the icons for more information.<br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var spiritoasis = L.polygon([
+          [130, 128],
+          [158, 134],
+          [167, 100],
+          [134, 90],
+      ], {color: '#000AD5'}).addTo(map);
+
+      var vechileShop = L.marker([149.21875, 435.5], {icon : watershop}).addTo(map);
+
+      var shop = L.marker([199.21875, 215.5], {icon : watershop}).addTo(map);
+
+      var deliver = L.marker([176.21875, 203.5], {icon : waterIcon}).addTo(map);
+
+      var grandmother = L.marker([114.71875, 263.5], {icon : waterIcon}).addTo(map);
+
+      var granddaughter = L.marker([210.71875, 264.5], {icon : waterIcon}).addTo(map);
+
+      var vechileShoppopup = L.DomUtil.create('div', 'popup');
+      vechileShoppopup.innerHTML = '<section class="container"><h3>Water Vehicle Shop</h3><b>This shop sells vehicles to Waterbenders:<br>Dinghy for free<br>Canoe for 150 Pieces<br>Cutter Sailing Ship for 20 Pieces';
+      var shoppopup = L.DomUtil.create('div', 'popup');
+      shoppopup.innerHTML = '<section class="container2" style="height: 160px; width: 400px;"><h3>Water Gear and Pet hop</h3><b>This shop sells to Waterbenders:<div class="three">Parka for 100 Pieces<br>Winter Mask for 80 Pieces<br>Wolf Tribe of the North Helmet for 200 Pieces<br>Wolf Tribe of the North Helmet for 250 Pieces<br>Water Tribe Necklace for 75 Pieces</div><div class="four">Club for 100 Pieces<br>Boomerang for 125 Pieces<br>Water Tribe Shield for 150 Pieces<br>Otter Penguin for 200 Pieces';
+      var deliverpopup = L.DomUtil.create('div', 'popup');
+      deliverpopup.innerHTML = '<section class="container" style="height: 130px;"><div class="one"><h3>Deliver Box - Level Requirement: Level 1</h3><b>Deliver the waterbender\'s box to the "delivering note" quest giver at Air Temple and claim your reward.</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[800] Experience<br>[30](60) Pieces';
+      var granddaughterpopup = L.DomUtil.create('div', 'popup');
+      granddaughterpopup.innerHTML = '<section class="container" style="height: 120px;"><div class="one"><h3>Find the Necklace - Level Requirement: Level 50</h3><b>Find the waterbender\'s necklace and return it to her to claim your reward.</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[600] Experience<br>[20](40) Pieces';
+      var grandmotherpopup = L.DomUtil.create('div', 'popup');
+      grandmotherpopup.innerHTML = '<section class="container" style="height: 130px;"><div class="one"><h3>Find the Grandmother - Level Requirement: Level 1</h3><b>Find the waterbender\'s grandmother and talk to her to claim your reward.</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[200] Experience<br>[20](40) Pieces';
+
+      vechileShop.bindPopup(vechileShoppopup);
+      shop.bindPopup(shoppopup, {maxWidth: 500});
+      deliver.bindPopup(deliverpopup);
+      granddaughter.bindPopup(granddaughterpopup);
+      grandmother.bindPopup(grandmotherpopup);
+
+      var spiritoasispopup = L.DomUtil.create('div', 'popup');
+      spiritoasispopup.innerHTML = '<div class = "spiritoasispopup"><h1>Spirit Oasis</h1> Click here to see the spirit oasis up close.</div>';
+
+      $('div.spiritoasispopup', spiritoasispopup).on('click', function() {
+      		changeMap('spiritoasis');
+          spiritoasisfc();
+      });
+
+      spiritoasis.bindPopup(spiritoasispopup);
+
+    }
+    function palmoasisfc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Desert Town</h3><button onclick="changeMap(\'https://i.ibb.co/BGD2RYZ/Desert.png\'); desertfc();">Click to go back to the Desert map.</button><br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var popup = L.popup()
+          .setLatLng([94, 485])
+          .setContent("This is the Desert Town. Rock Elementals have the ability to spawn here. This area, including the entirety of the Desert, disables Liquid elementals from using their element. Liquid Elementals are only able to use the move, Liquid Splash upon buying the Liquid Pouch gamepass.")
+          .openOn(map);
+    }
+    function rlhideoutfc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Rouge Hideout</h3><button onclick="changeMap(\'https://i.ibb.co/wwcxsM4/Downward-Wind-Temple.png\'); watfc();">Click to go back to the Downward Wind Temple map.</button><br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var popup = L.popup()
+          .setLatLng([94, 485])
+          .setContent("This is the Rogue Hideout location. This is where Rogue criminals harbor whilst planning their next move.")
+          .openOn(map);
+    }
+    function rokufc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Ancient Flame Temple Map</h3>Click on the icons for more information.<br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var temple = L.polygon([
+        [154, 262],
+        [170, 271],
+        [177, 255],
+        [178, 239],
+        [167, 231],
+        [146, 231]
+      ], {color: '#FE0000'}).addTo(map);
+
+      var vechileShop = L.marker([141, 351], {icon : fireIcon}).addTo(map);
+
+      var vechileShoppopup = L.DomUtil.create('div', 'popup');
+      vechileShoppopup.innerHTML = '<section class="container"><h3>Flame Vehicle Shop</h3><b>This shop sells vehicles to Flame elementals:<br>Dinghy for free<br>Hot Air Balloon for 175 Pieces<br>Fire Nation Ship for 500 Pieces<br>Dragon for 2000 Pieces';
+
+      vechileShop.bindPopup(vechileShoppopup);
+
+      var templepopup = L.DomUtil.create('div', 'popup');
+      templepopup.innerHTML = '<div class = "templepopup"><h1>Volcano</h1> Click here to see the volcano up close.</div>';
+
+      $('div.templepopup', templepopup).on('click', function() {
+      		changeMap('https://i.ibb.co/G9FdZXG/Volcano2.png');
+          rokutemplefc();
+      });
+
+      temple.bindPopup(templepopup);
+
+    }
+    function rokutemplefc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Ancient Flame Temple</h3><button onclick="changeMap(\'https://i.ibb.co/7JNzwWG/Ancient-Flame-Temple.png\'); rokufc();">Click to go back to the Anicent Flame Temple map.</button><br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var popup = L.popup()
+          .setLatLng([94, 485])
+          .setContent("This is one of the two meditation zones where all elementals are able to meditate upon the usage of the keybind, E.")
+          .openOn(map);
+
+    }
+    function satfc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Upward Wind Temple Temple Map</h3>Click on the icons for more information.<br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var airball = L.polygon([
+          [149, 368],
+          [164, 362],
+          [160, 351],
+          [146, 357],
+      ], {color: '#3E94B0'}).addTo(map);
+
+      var deliverNote = L.marker([193, 356], {icon : airIcon}).addTo(map);
+
+      var vechileShop = L.marker([34.21875, 386], {icon : airshop}).addTo(map);
+
+      var shop = L.marker([108.21875, 328], {icon : airshop}).addTo(map);
+
+      var redLotus = L.marker([44.71875, 229], {icon : redLotusIcon}).addTo(map);
+
+      var oldMan = L.marker([89.21875, 265.5], {icon : airIcon}).addTo(map);
+
+      var deliverNotepopup = L.DomUtil.create('div', 'popup');
+      deliverNotepopup.innerHTML = '<section class="container" style="height: 130px;"><div class="one" style="padding-right: 5px;"><h3>Delive Note - Level Requirement: Level 1</h3><b>Deliver a note to a waterbender in the Southern Water Tribe, then return to the quest giver to claim your reward.</div><div class="two">Rewards:[Normal Reward](Reward if in ALTA Group)[1000] Experience<br>[20](40) Pieces';
+      var vechileShoppopup = L.DomUtil.create('div', 'popup');
+      vechileShoppopup.innerHTML = '<section class="container"><h3>Flying Bison Shop</h3><b>Sells a Flying Bison for free to Air Nomads.';
+      var shoppopup = L.DomUtil.create('div', 'popup');
+      shoppopup.innerHTML = '<section class="container"><h3>Air Gear and Pet Shop</h3><b>This shop sells to Air Nomads:<br>Air Nomad Necklace for 50 Pieces<br>Air Nomad Triad Necklace for 50 Pieces<br>Flying Lemur for 200 Pieces';
+      var oldManpopup = L.DomUtil.create('div', 'popup');
+      oldManpopup.innerHTML = '<section class="container" style="height: 130px;"><div class="one"><h3>Old Man - Level Requirement: Level 100</h3><b>Travel around the map to find other NPC\'s who might know where the Old Airbenders Glider is.</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[2000] Experience<br>[25](50) Pieces';
+      var redLotuspopup = L.DomUtil.create('div', 'popup');
+      redLotuspopup.innerHTML = '<section class="container" style="height:150px"><div class="one"><h3>Red Lotus Quest - Level Requirement: Level 200</h3><b>Talk to this NPC if you want to join the Red Lotus. Do the task he and the other Red Lotus members give.<br>Part 1: Ba Sing Se&gt;</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[5000] Experience<br>[125](250) Pieces';
+
+      deliverNote.bindPopup(deliverNotepopup);
+      vechileShop.bindPopup(vechileShoppopup);
+      shop.bindPopup(shoppopup);
+      oldMan.bindPopup(oldManpopup);
+      redLotus.bindPopup(redLotuspopup);
+
+      var airballpopup = L.DomUtil.create('div', 'popup');
+      airballpopup.innerHTML = '<div class = "airballpopup"><h1>Airball Stands</h1> Click here to see the airball stands up close.</div>';
+
+      $('div.airballpopup', airballpopup).on('click', function() {
+      		changeMap('airball');
+          airballfc();
+      });
+
+      airball.bindPopup(airballpopup);
+
+    }
+    function spiritoasisfc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Spirit Oasis</h3><button onclick="changeMap(\'nwt\'); nwtfc();">Click to go back to the Northern Water Tribe map.</button><br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var popup = L.popup()
+          .setLatLng([131, 488])
+          .setContent("This is the Spirit Oasis. In this pond swim the Moon and Ocean spirits, Tui and La. They are also refered to as Push and Pull, Ying and Yang. The Moon spirit Tui is the first Waterbender and in Tui's absence all Waterbenders lose the ability to bend.")
+          .openOn(map);
+
+    }
+    function swampfc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Swamp Map</h3>Click on the icons for more information.<br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+    }
+    function swtfc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Southern Liquid Ruins Map</h3>Click on the icons for more information.<br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var vechileShop = L.marker([136, 282], {icon : watershop}).addTo(map);
+
+      var fish = L.marker([127, 286], {icon : waterIcon}).addTo(map);
+
+      var wl = L.marker([91, 217], {icon : whiteLotusIcon}).addTo(map);
+
+      var rl = L.marker([63, 349], {icon : redLotusIcon}).addTo(map);
+
+      var chi = L.marker([117, 279], {icon : waterIcon}).addTo(map);
+
+      var fishpopup = L.DomUtil.create('div', 'popup');
+      fishpopup.innerHTML = '<section class="container" style="height: 120px;"><div class="one" style="padding-right: 5px;"><h3>Catching Fish - Level Requirement: Level 1</h3><b>Catch 4 fishes and give them to the quest giver to claim your reward.</div><div class="two">Rewards:[Normal Reward](Reward if in ALTA Group)<br>[400] Experience<br>[10](20) Pieces';
+      var vechileShoppopup = L.DomUtil.create('div', 'popup');
+      vechileShoppopup.innerHTML = '<section class="container"><h3>Water Vehicle Shop</h3><b>This shop sells vehicles to Waterbenders:<br>Dinghy for free<br>Canoe for 150 Pieces<br>Cutter Sailing Ship for 20 Pieces';
+      var wlpopup = L.DomUtil.create('div', 'popup');
+      wlpopup.innerHTML = '<section class="container"><h3>White Lotus Quest Part 1&3 - Level Requirement: Level 150</h3><b>This NPC gives the first task for the White Lotus Quest. The task is to retrieve a flower from the Southern Air Temple. The third task is to return the flower to the Southern Air Temple.<br>&lt;Quest start: Si Wong Desert | Part 2: Ba Sing Se&gt;';
+      var chipopup = L.DomUtil.create('div', 'popup');
+      chipopup.innerHTML = '<section class="container"><h3>Chiblock Teacher - Level Requirement: Level 150</h3><b>This NPC teaches Chiblocking to Nonbenders who are Level 150 for free. When you learn this you cannot learn how to use Knifes.';
+      var rlpopup = L.DomUtil.create('div', 'popup');
+      rlpopup.innerHTML = '<section class="container"><h3>Red Lotus Quest Part 3 - Level Requirement: Level 200</h3><b>This NPC gives the third task for the Red Lotus Quest. The task is to retrieve a scroll from the Northern Water Tribe without being spotted.<br>&lt;Part 2: Fire Nation | Part 4: Si Wong Desert&gt;';
+
+      fish.bindPopup(fishpopup);
+      vechileShop.bindPopup(vechileShoppopup);
+      wl.bindPopup(wlpopup);
+      rl.bindPopup(rlpopup);
+      chi.bindPopup(chipopup);
+
+    }
+    function watfc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Downward Wind Temple Map</h3>Click on the icons for more information.<br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var rlhideout = L.polygon([
+          [209, 434],
+          [203, 439],
+          [199, 437],
+          [201, 431],
+      ], {color: '#D11512'}).addTo(map);
+
+      var vechileShop = L.marker([176, 244], {icon : airshop}).addTo(map);
+
+      var babybison = L.marker([173, 191], {icon : airIcon}).addTo(map);
+
+      var vechileShoppopup = L.DomUtil.create('div', 'popup');
+      vechileShoppopup.innerHTML = '<section class="container"><h3>Flying Buffalo Shop</h3><b>Sells a Flying Buffalo for free to Wind Wanderers.';
+      var babybisonpopup = L.DomUtil.create('div', 'popup');
+      babybisonpopup.innerHTML = '<section class="container" style="height:130px"><div class="one"><h3>Find the Baby Buffalo - Level Requirement: Level 1</h3><b>Find the lost baby bison and return to the quest giver to claim your reward.</div><div class="two">Rewards:[Normal Reward](Reward if in ATLA Roblox Group)<br>[300] Experience<br>[10](20) Pieces';
+
+      vechileShop.bindPopup(vechileShoppopup);
+      babybison.bindPopup(babybisonpopup);
+
+      var rlhideoutpopup = L.DomUtil.create('div', 'popup');
+      rlhideoutpopup.innerHTML = '<div class = "rlhideoutpopup"><h1>Rogue Hideout</h1> Click here to see the Rogue Hideout up close.</div>';
+
+      $('div.rlhideoutpopup', rlhideoutpopup).on('click', function() {
+      		changeMap('https://i.ibb.co/hCYMNG9/Rogue-Hideout.png');
+          rlhideoutfc();
+      });
+
+      rlhideout.bindPopup(rlhideoutpopup);
+
+    }
+    function wlcampfc(){
+      var text = document.createElement('p');
+      text.innerHTML = '<h3>Bandit Camp</h3><button onclick="changeMap(\'https://i.ibb.co/x3LH96Z/Rock-Realm-City.png\'); bssfc();">Click to go back to the Rock Realm City map.</button><br><button onclick="changeMap(\'map\'); mapfc();">Click to go back to the main map.</button>';
+      document.getElementById('helptext').replaceChild(text, document.getElementById('helptext').childNodes[0]);
+
+      var popup = L.popup()
+          .setLatLng([94, 485])
+          .setContent("This is the Bandit Camp. This is the spawn of Bandits quest when you're tasked to defeat them. This is also the quest...")
+          .openOn(map);
+
+    }
+
+    </script>
+
+    
+  
+</body></html>
